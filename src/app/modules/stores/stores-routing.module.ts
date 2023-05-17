@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StoresComponent } from './pages/stores/stores.component';
 // import { StoreComponent } from './pages/stores/stores.component';
 import { CreateStoreComponent } from './pages/create-store/create-store.component';
+import { ItemsComponent } from './pages/items/items.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'create-store',
     component: CreateStoreComponent,
+  },
+  {
+    path: 'store/:id',
+    component: ItemsComponent,
   },
 ];
 
