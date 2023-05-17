@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { StoresComponent } from './pages/stores/stores.component';
 // import { StoreComponent } from './pages/stores/stores.component';
+import { CreateStoreComponent } from './pages/create-store/create-store.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,10 @@ const routes: Routes = [
   //   path: ':name',
   //   component: StoreComponent,
   // },
+  {
+    path: 'create-store',
+    component: CreateStoreComponent,
+  },
 ];
 
 @NgModule({

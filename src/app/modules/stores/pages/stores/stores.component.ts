@@ -13,6 +13,7 @@ import {
 import { faTrello } from '@fortawesome/free-brands-svg-icons';
 import { MeService } from '../../../../services/me.service';
 import { Store } from './../../../../models/store.model';
+import { StoreService } from 'src/app/services/store.service';
 
 @Component({
   selector: 'app-boards',
@@ -32,14 +33,22 @@ export class StoresComponent implements OnInit {
   faUsers = faUsers;
   faGear = faGear;
 
-  constructor(private meService: MeService) {}
+  constructor(private meService: MeService, private storeService: StoreService) {}
 
   ngOnInit() {
     this.getMeBoards();
-    console.log(this.stores);
+  }
+  getMeBoards() {
+    this.meService.getMeStores().subscribe(data => {
+      this.stores = data.stores;
+    });
   }
 
-  getMeBoards() {
-    this.meService.getMeStores().subscribe((stores) => (this.stores = stores));
+  deleteStore(name: string) {
+    this.storeService.deleteStore(name).subscribe({
+      next: () => {
+        this.getMeBoards();
+      },
+    });
   }
 }

@@ -1,26 +1,29 @@
 <div class="container mx-auto flex mt-10">
-  Storess!!!
-  <!-- <div class="w-1/5 mr-4">
-    <ul class="flex flex-col font-medium text-gray-700 mb-5">
-      <li>
-        <a class="block bg-sky-100 rounded py-1 px-3 text-sky-700"><fa-icon [icon]="faTrello"></fa-icon> Boards</a>
-      </li>
-      <li>
-        <a class="block py-1 px-3"><fa-icon [icon]="faBox"></fa-icon> Templates</a>
-      </li>
-      <li>
-        <a class="block py-1 px-3"><fa-icon [icon]="faWaveSquare"></fa-icon> Home</a>
-      </li>
-    </ul>
-  </div>
   <div class="w-full">
-    <h1 class="text-lg font-bold mb-4"><fa-icon [icon]="faClock"></fa-icon> Recently viewed</h1>
-    <div class="grid grid-cols-4 gap-4">
-      <a [routerLink]="['/app/boards', board.id]" *ngFor="let board of boards">
-        <app-card-color [color]="board.backgroundColor">
-          {{ board.title }}
-        </app-card-color>
-      </a>
+   <div class="flex justify-between mb-4">
+     <h1 class="text-4xl font-bold mb-4 text-white">Recently viewed</h1>
+     <a [routerLink]="['create-store']" class="flex items-center rounded-lg bg-blue-600 text-white font-bold px-4 hover:bg-blue-800">Create new Store</a>
+   </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div
+         *ngFor="let store of stores"
+        class="max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white truncate">{{ store.name }}</h5>
+        <img src="../../../../../assets/store.png" class="h-32 mx-auto my-4" alt="store-image">
+        <div class="flex justify-center gap-4">
+          <a [routerLink]="['create-store', store.id]"
+            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none bg-blue-600 focus:ring-blue-800">
+            View articles
+            <svg aria-hidden="true" class="w-4 h-4 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <button (click)="deleteStore(store.name)" class="rounded-lg bg-red-300 text-white px-2 text-sm">Delete Store</button>
+        </div>
+      </div>
     </div>
-  </div> -->
+  </div>
 </div>

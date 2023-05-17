@@ -10,3 +10,7 @@ export interface Item {
   price: number;
   store_id: number;
 }
+
+export interface ResponseStore {
+  stores: Store[];
+}
