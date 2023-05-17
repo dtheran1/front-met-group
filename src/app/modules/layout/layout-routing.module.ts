@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'boards',
+        redirectTo: 'stores',
         pathMatch: 'full',
       },
       {
@@ -20,18 +20,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('../stores/stores.module').then((m) => m.StoresModule),
       },
-      // {
-      //   path: 'profile',
-      //   canActivate: [AuthGuard],
-      //   loadChildren: () =>
-      //     import('../profile/profile.module').then((m) => m.ProfileModule),
-      // },
-      // {
-      //   path: 'users',
-      //   canActivate: [AuthGuard],
-      //   loadChildren: () =>
-      //     import('../users/users.module').then((m) => m.UsersModule),
-      // },
     ],
   },
 ];
