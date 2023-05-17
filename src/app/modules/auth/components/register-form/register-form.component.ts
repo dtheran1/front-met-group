@@ -2,10 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-// import { RequestStatus } from '@models/request-status.model';
-// import { AuthService } from '@services/auth.service';
-
 import { CustomValidators } from '../../../../utils/validators';
+import { AuthService } from './../../../../services/auth.service';
 
 @Component({
   selector: 'app-register-form',
@@ -35,22 +33,26 @@ export class RegisterFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    // private autService: AuthService
+    private autService: AuthService
   ) {}
 
   register() {
     if (this.form.valid) {
       this.status = 'loading';
-      const { username, email, password } = this.form.getRawValue();
-      // this.autService.register(name, email, password).subscribe({
-      //   next: () => {
-      //     this.status = 'success';
-      //     this.router.navigate(['/app/boards']);
-      //   },
-      //   error: () => {
-      //     this.status = 'failed';
-      //   },
-      // });
+      const { username, password } = this.form.getRawValue();
+      this.autService.register(username, password).subscribe({
+        next: () => {
+          this.status = 'success';
+          this.router.navigate(['/login'], {
+            queryParams: {
+              username,
+            },
+          });
+        },
+        error: () => {
+          this.status = 'failed';
+        },
+      });
     } else {
       this.form.markAllAsTouched();
     }

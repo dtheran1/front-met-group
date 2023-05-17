@@ -41,8 +41,7 @@ export class LoginFormComponent {
       this.authService.login(username, password).subscribe({
         next: () => {
           this.status = 'success';
-          console.log('Logueado')
-          // this.router.navigate(['/app']);
+          this.router.navigate(['/app']);
         },
         error: () => {
           this.status = 'failed';

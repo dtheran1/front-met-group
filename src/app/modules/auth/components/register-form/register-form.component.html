@@ -3,11 +3,11 @@
   <form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="register()">
     <div>
       <div class="relative">
-        <input formControlName="name" placeholder="Enter your name" type="text" name="name"
+        <input formControlName="username" placeholder="Enter your name" type="text" name="name"
           class="w-full rounded bg-gray-100 border-gray-300 border-2" />
       </div>
-      <div *ngIf="form.controls.name.touched && form.controls.name.invalid">
-        <p *ngIf="form.controls.name.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+      <div *ngIf="form.controls.username.touched && form.controls.username.invalid">
+        <p *ngIf="form.controls.username.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
           This field is mandatory
         </p>
       </div>

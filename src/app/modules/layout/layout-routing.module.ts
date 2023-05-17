@@ -2,24 +2,24 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LayoutComponent } from './components/layout/layout.component';
-// import { AuthGuard } from '@guards/auth.guard';
+import { AuthGuard } from '../../guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'boards',
-      //   pathMatch: 'full',
-      // },
-      // {
-      //   path: 'boards',
-      //   // canActivate: [AuthGuard],
-      //   loadChildren: () =>
-      //     import('../boards/boards.module').then((m) => m.BoardsModule),
-      // },
+      {
+        path: '',
+        redirectTo: 'boards',
+        pathMatch: 'full',
+      },
+      {
+        path: 'stores',
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import('../stores/stores.module').then((m) => m.StoresModule),
+      },
       // {
       //   path: 'profile',
       //   canActivate: [AuthGuard],
