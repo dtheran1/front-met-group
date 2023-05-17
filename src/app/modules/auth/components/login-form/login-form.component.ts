@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../../../../services/auth.service';
 // import { RequestStatus } from '@models/request-status.model';
-// import { AuthService } from '@services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -11,8 +11,8 @@ import { faPen, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 })
 export class LoginFormComponent {
   form = this.formBuilder.nonNullable.group({
-    email: ['', [Validators.email, Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required, Validators.minLength(4)]],
   });
   faPen = faPen;
   faEye = faEye;
@@ -23,13 +23,13 @@ export class LoginFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    // private authService: AuthService,
+    private authService: AuthService,
     private route: ActivatedRoute
   ) {
     this.route.queryParamMap.subscribe((params) => {
-      const email = params.get('email');
-      if (email) {
-        this.form.controls.email.setValue(email);
+      const username = params.get('username');
+      if (username) {
+        this.form.controls.username.setValue(username);
       }
     });
   }
@@ -37,16 +37,17 @@ export class LoginFormComponent {
   doLogin() {
     if (this.form.valid) {
       this.status = 'loading';
-      const { email, password } = this.form.getRawValue();
-      // this.authService.login(email, password).subscribe({
-      //   next: () => {
-      //     this.status = 'success';
-      //     this.router.navigate(['/app']);
-      //   },
-      //   error: () => {
-      //     this.status = 'failed';
-      //   },
-      // });
+      const { username, password } = this.form.getRawValue();
+      this.authService.login(username, password).subscribe({
+        next: () => {
+          this.status = 'success';
+          console.log('Logueado')
+          // this.router.navigate(['/app']);
+        },
+        error: () => {
+          this.status = 'failed';
+        },
+      });
     } else {
       this.form.markAllAsTouched();
     }

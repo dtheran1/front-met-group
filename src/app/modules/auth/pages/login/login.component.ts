@@ -6,7 +6,6 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  title = 'Hola daniel'
   constructor() {}
 
   // ngOnInit(): void {}
