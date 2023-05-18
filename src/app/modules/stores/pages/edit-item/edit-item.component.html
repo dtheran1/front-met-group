@@ -1,10 +1,10 @@
 <div class="container">
   <div *ngIf="!isCreating">
-    <a [routerLink]="['/app']"
-      class="flex text-black bg-white font-bold text-xl ml-10 mt-10 w-32 rounded-lg hover:bg-black hover:text-white">
+    <button (click)="goBack()"
+      class="flex text-black backdrop-blur-md bg-white/30 font-bold text-xl ml-10 mt-10 w-32 rounded-lg hover:bg-black hover:text-white">
       <img src="../../../../../assets/back.png" class="w-10" alt="">
       <span class="self-center">Go Back</span>
-    </a>
+    </button>
     <div class="bg-white/30 rounded-xl shadow-xl p-4 my-4 flex w-7/12 justify-center mx-auto ">
       <div>
         <h1 class="text-center font-bold py-2 text-white text-2xl">Edit price of {{ item?.name }}</h1>
@@ -15,7 +15,8 @@
                 class="w-full rounded bg-gray-100 border-gray-300 border-2" required />
             </div>
             <div *ngIf="formEdit.controls.price.touched && formEdit.controls.price.invalid">
-              <p *ngIf="formEdit.controls.price.hasError('required')" class="font-medium text-red-500 text-xs mt-1 ml-1">
+              <p *ngIf="formEdit.controls.price.hasError('required')"
+                class="font-medium text-red-500 text-xs mt-1 ml-1">
                 This field is mandatory
               </p>
             </div>
@@ -30,11 +31,11 @@
   </div>
 
   <div *ngIf="isCreating">
-    <a [routerLink]="['/app']"
-      class="flex text-black bg-white font-bold text-xl ml-10 mt-10 w-32 rounded-lg hover:bg-black hover:text-white">
+    <button (click)="goBack()"
+      class="flex text-black backdrop-blur-md bg-white/30 font-bold text-xl ml-10 mt-10 w-32 rounded-lg hover:bg-black hover:text-white">
       <img src="../../../../../assets/back.png" class="w-10" alt="">
       <span class="self-center">Go Back</span>
-    </a>
+    </button>
     <div class="bg-white/30 rounded-xl shadow-xl p-4 my-4 flex w-7/12 justify-center mx-auto ">
       <div>
         <h1 class="text-center font-bold py-2 text-white text-2xl mb-4">Create new Item</h1>

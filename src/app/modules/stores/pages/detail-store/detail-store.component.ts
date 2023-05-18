@@ -10,6 +10,7 @@ import { ItemService } from 'src/app/services/item.service';
 })
 export class DetailStoreComponent implements OnInit {
   store: Store | null = null;
+  status = 'init';
 
   constructor(
     private storeService: StoreService,
@@ -39,7 +40,8 @@ export class DetailStoreComponent implements OnInit {
       },
       error: () => {
         //
-      }
-    })
+        this.status = 'failed';
+      },
+    });
   }
 }

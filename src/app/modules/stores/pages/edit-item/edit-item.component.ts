@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
 import { Item, Store } from 'src/app/models/store.model';
 import { StoreService } from 'src/app/services/store.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-edit-item',
@@ -29,7 +30,8 @@ export class EditItemComponent implements OnInit {
     private router: Router,
     private itemService: ItemService,
     private route: ActivatedRoute,
-    private storeService: StoreService
+    private storeService: StoreService,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -38,7 +40,7 @@ export class EditItemComponent implements OnInit {
       const storeName = params.get('storename');
 
       if (itemName === 'create-item') {
-        this.isCreating = true
+        this.isCreating = true;
         this.getStore(storeName as string);
       } else {
         this.getItem(itemName as string);
@@ -69,7 +71,7 @@ export class EditItemComponent implements OnInit {
       this.itemService.createItem(name, payload as Item).subscribe({
         next: () => {
           this.status = 'success';
-          this.router.navigate(['/app']);
+          this.goBack();
         },
         error: () => {
           this.status = 'failed';
@@ -91,7 +93,7 @@ export class EditItemComponent implements OnInit {
       this.itemService.updateItem(this.item!.name, payload as Item).subscribe({
         next: () => {
           this.status = 'success';
-          this.router.navigate(['/app']);
+          this.goBack();
         },
         error: () => {
           this.status = 'failed';
@@ -100,5 +102,8 @@ export class EditItemComponent implements OnInit {
     } else {
       this.form.markAllAsTouched();
     }
+  }
+  goBack() {
+    this.location.back();
   }
 }
