@@ -10,7 +10,6 @@ import { RegisterComponent } from './pages/register/register.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { HeaderComponent } from './components/header/header.component';
 
-
 @NgModule({
   declarations: [
     LoginComponent,

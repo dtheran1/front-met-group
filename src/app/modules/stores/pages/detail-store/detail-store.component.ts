@@ -12,22 +12,18 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faTrello } from '@fortawesome/free-brands-svg-icons';
 import { MeService } from '../../../../services/me.service';
-import { Store } from './../../../../models/store.model';
+import { Item, Store } from './../../../../models/store.model';
 import { StoreService } from 'src/app/services/store.service';
 import { ActivatedRoute } from '@angular/router';
+import { ModalComponent } from '../../components/modal/modal.component';
+import { Dialog } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-detail-store',
   templateUrl: './detail-store.component.html',
 })
 export class DetailStoreComponent implements OnInit {
-  stores: Store[] = [];
-  nameStore = '';
-  store: Store = {
-    name: '',
-    items: [],
-    id: 0,
-  };
+  store: Store | null = null;
 
   faTrello = faTrello;
   faBox = faBox;
@@ -42,17 +38,35 @@ export class DetailStoreComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: Dialog
   ) {}
 
   ngOnInit() {
-    this.getStore();
+    this.route.paramMap.subscribe((params) => {
+      const name = params.get('name');
+      if (name) {
+        this.getStore(name);
+      }
+    });
   }
-  getStore() {
-    this.route.params.subscribe((params) => (this.nameStore = params['name']));
-    this.storeService.getStore(this.nameStore).subscribe((data) => {
+
+  private getStore(name: string) {
+    this.storeService.getStore(name).subscribe((data) => {
       this.store = data;
-      // this.items = data.items;
+    });
+  }
+
+  openDialog(item: Item) {
+    const dialogRef = this.dialog.open(ModalComponent, {
+      minWidth: '300px',
+      maxWidth: '50%',
+      data: {
+        item: item,
+      },
+    });
+    dialogRef.closed.subscribe((output: any) => {
+      console.log(output);
     });
   }
 
