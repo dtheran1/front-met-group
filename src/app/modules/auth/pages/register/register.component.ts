@@ -9,8 +9,4 @@ export class RegisterComponent {
   constructor(
     private authService: AuthService
   ) {}
-
-  // register() {
-  //   this.authService.register().subscribe()
-  // }
 }

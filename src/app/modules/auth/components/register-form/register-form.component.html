@@ -67,6 +67,9 @@
         The password are not the same
       </p>
     </div>
+    <div *ngIf="status==='failed'">
+      <p class="font-medium text-red-500 text-xs mt-1 ml-1">User already exists, please change user name</p>
+    </div>
     <div>
       <button class="w-full font-medium rounded text-sm px-5 py-2 bg-sky-500 text-white hover:bg-sky-800">Register</button>
     </div>
