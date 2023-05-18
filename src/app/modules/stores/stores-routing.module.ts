@@ -5,6 +5,7 @@ import { StoresComponent } from './pages/stores/stores.component';
 import { CreateStoreComponent } from './pages/create-store/create-store.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { DetailStoreComponent } from './pages/detail-store/detail-store.component';
+import { EditItemComponent } from './pages/edit-item/edit-item.component';
 
 const routes: Routes = [
   {
@@ -19,10 +20,10 @@ const routes: Routes = [
     path: 'store/:name',
     component: DetailStoreComponent,
   },
-  // {
-  //   path: 'store/:id',
-  //   component: ItemsComponent,
-  // },
+  {
+    path: 'store/:name/item/:name',
+    component: EditItemComponent,
+  },
 ];
 
 @NgModule({

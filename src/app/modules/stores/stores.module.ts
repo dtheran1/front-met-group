@@ -9,12 +9,10 @@ import { StoresComponent } from './pages/stores/stores.component';
 import { CreateStoreComponent } from './pages/create-store/create-store.component';
 import { ItemsComponent } from './pages/items/items.component';
 import { DetailStoreComponent } from './pages/detail-store/detail-store.component';
-import { ModalComponent } from './components/modal/modal.component';
-// import { BoardComponent } from './pages/board/board.component';
+import { EditItemComponent } from './pages/edit-item/edit-item.component';
 
-// StoreComponent add a declaractions
 @NgModule({
-  declarations: [StoresComponent, CreateStoreComponent, ItemsComponent, DetailStoreComponent, ModalComponent],
+  declarations: [StoresComponent, CreateStoreComponent, ItemsComponent, DetailStoreComponent, EditItemComponent],
   imports: [
     CommonModule,
     StoresRoutingModule,
