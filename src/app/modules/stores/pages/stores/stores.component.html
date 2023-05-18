@@ -13,8 +13,8 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <div *ngFor="let store of stores"
         class="max-w-sm p-6 border rounded-lg backdrop-blur-sm bg-white/30 hover:shadow-xl hover:shadow-black transition ease-out">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white truncate">{{ store.name | uppercase }}</h5>
-        <img src="../../../../../assets/store.png" class="h-32 mx-auto my-4" alt="store-image">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white truncate italic">{{ store.name | uppercase }}</h5>
+        <img src="../../../../../assets/store2.png" class="h-32 mx-auto my-4" alt="store-image">
         <div class="flex justify-center gap-4">
           <a [routerLink]="['store', store.name]"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none bg-blue-600 focus:ring-blue-800">

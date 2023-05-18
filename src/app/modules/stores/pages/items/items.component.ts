@@ -27,7 +27,6 @@ export class ItemsComponent implements OnInit {
     this.route.params.subscribe((params) => (this.nameStore = params['name']));
     this.storeService.getStore(this.nameStore).subscribe((data) => {
       this.store = data;
-      // this.items = data.items;
     });
   }
 }

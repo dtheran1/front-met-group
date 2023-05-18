@@ -18,11 +18,11 @@ export class ItemService {
   }
 
   createItem(name: Item['name'], payload: Item) {
-    return this.http.post(`${this.apiUrl}/item/${name}`, payload);
+    return this.http.post<Item>(`${this.apiUrl}/item/${name}`, payload);
   }
 
   updateItem(name: Item['name'], payload: Item) {
-    return this.http.put(`${this.apiUrl}/item/${name}`, payload);
+    return this.http.put<Item>(`${this.apiUrl}/item/${name}`, payload);
   }
 
   deleteItem(name: Item['name']) {

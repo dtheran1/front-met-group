@@ -33,10 +33,11 @@ export class AuthService {
   }
 
   register(username: string, password: string) {
-    return this.http.post(`${this.apiUrl}/register`, {
+    const payload = {
       username,
       password,
-    });
+    }
+    return this.http.post(`${this.apiUrl}/register`, payload);
   }
   logout() {
     this.tokenService.removeToken();

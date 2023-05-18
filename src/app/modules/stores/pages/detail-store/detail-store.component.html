@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="flex justify-between items-center mb-4">
       <a [routerLink]="['/app']"
-        class="flex text-black bg-white font-bold text-xl w-32 rounded-lg hover:bg-black hover:text-white">
+        class="flex text-black backdrop-blur-md bg-white/30 font-bold text-xl w-32 rounded-lg hover:bg-black hover:text-white">
         <img src="../../../../../assets/back.png" class="w-10" alt="">
         <span class="self-center">Go Back</span>
       </a>
@@ -20,9 +20,9 @@
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <div *ngFor="let item of store?.items"
-        class="max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700 hover:scale-105 transition ease-out">
+        class="max-w-sm p-6 border rounded-lg backdrop-blur-sm bg-black/50 border-gray-800 hover:shadow-md hover:shadow-black transition ease-out">
         <div class="flex justify-between">
-          <h5 class="mb-2 text-2xl font-bold tracking-tight text-white truncate">{{ item.name }}</h5>
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-white truncate">{{ item.name | uppercase }}</h5>
           <img src="../../../../../assets/store.png" class="h-12" alt="store-image">
         </div>
         <div class="flex justify-center text-white font-semibold my-3">

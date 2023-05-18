@@ -12,7 +12,7 @@ export class StoreService {
   constructor(private http: HttpClient) {}
 
   createStore(name: Store['name']) {
-    return this.http.post(`${this.apiUrl}/store/${name}`, {});
+    return this.http.post<Store>(`${this.apiUrl}/store/${name}`, {});
   }
 
   getStore(name: Store['name']) {
