@@ -1,5 +1,5 @@
 <div class="container">
-  <div *ngIf="!isUpdating">
+  <div *ngIf="!isCreating">
     <a [routerLink]="['/app']"
       class="flex text-black bg-white font-bold text-xl ml-10 mt-10 w-32 rounded-lg hover:bg-black hover:text-white">
       <img src="../../../../../assets/back.png" class="w-10" alt="">
@@ -29,7 +29,7 @@
     </div>
   </div>
 
-  <div *ngIf="isUpdating">
+  <div *ngIf="isCreating">
     <a [routerLink]="['/app']"
       class="flex text-black bg-white font-bold text-xl ml-10 mt-10 w-32 rounded-lg hover:bg-black hover:text-white">
       <img src="../../../../../assets/back.png" class="w-10" alt="">
@@ -60,6 +60,11 @@
                 This field is mandatory
               </p>
             </div>
+          </div>
+          <div *ngIf="status === 'failed'">
+            <p class="text-red-600 font-bold">
+              This Item already exists
+            </p>
           </div>
           <div>
             <button

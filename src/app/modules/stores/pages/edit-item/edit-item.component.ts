@@ -23,7 +23,7 @@ export class EditItemComponent implements OnInit {
   status = 'init';
   item: Item | null = null;
   store: Store | null = null;
-  isUpdating = false;
+  isCreating = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,7 +39,7 @@ export class EditItemComponent implements OnInit {
       const storeName = params.get('storename');
 
       if (itemName === 'create-item') {
-        this.isUpdating = true;
+        this.isCreating = true
         this.getStore(storeName as string);
       } else {
         this.getItem(itemName as string);
@@ -64,12 +64,17 @@ export class EditItemComponent implements OnInit {
     const { price, name } = this.form.getRawValue();
     const payload = {
       price,
-      store_id: this.store?.id
+      store_id: this.store?.id,
     };
-    this.itemService.createItem(name, payload as Item).subscribe((data) => {
-      this.status = 'success';
-      this.router.navigate(['/app']);
-    });
+    this.itemService.createItem(name, payload as Item).subscribe((data) => ({
+      next: () => {
+        this.status = 'success';
+        this.router.navigate(['..']);
+      },
+      error: () => {
+        this.status = 'failed';
+      },
+    }));
   }
 
   updateItem() {
@@ -88,13 +93,5 @@ export class EditItemComponent implements OnInit {
         this.status = 'failed';
       },
     });
-  }
-
-  saveItem() {
-    if (this.isUpdating) {
-      this.updateItem();
-    } else {
-      this.createItem();
-    }
   }
 }
