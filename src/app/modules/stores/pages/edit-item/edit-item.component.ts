@@ -61,37 +61,45 @@ export class EditItemComponent implements OnInit {
   }
 
   createItem() {
-    const { price, name } = this.form.getRawValue();
-    const payload = {
-      price,
-      store_id: this.store?.id,
-    };
-    this.itemService.createItem(name, payload as Item).subscribe((data) => ({
-      next: () => {
-        this.status = 'success';
-        this.router.navigate(['..']);
-      },
-      error: () => {
-        this.status = 'failed';
-      },
-    }));
+    if (this.form.valid) {
+      const { price, name } = this.form.getRawValue();
+      const payload = {
+        price,
+        store_id: this.store?.id,
+      };
+      this.itemService.createItem(name, payload as Item).subscribe((data) => ({
+        next: () => {
+          this.status = 'success';
+          this.router.navigate(['/app']);
+        },
+        error: () => {
+          this.status = 'failed';
+        },
+      }));
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 
   updateItem() {
-    const { price } = this.formEdit.getRawValue();
-    const payload = {
-      price,
-      store_id: this.item?.store_id,
-    };
+    if (this.formEdit.valid) {
+      const { price } = this.formEdit.getRawValue();
+      const payload = {
+        price,
+        store_id: this.item?.store_id,
+      };
 
-    this.itemService.updateItem(this.item!.name, payload as Item).subscribe({
-      next: () => {
-        this.status = 'success';
-        this.router.navigate(['/app']);
-      },
-      error: () => {
-        this.status = 'failed';
-      },
-    });
+      this.itemService.updateItem(this.item!.name, payload as Item).subscribe({
+        next: () => {
+          this.status = 'success';
+          this.router.navigate(['/app']);
+        },
+        error: () => {
+          this.status = 'failed';
+        },
+      });
+    } else {
+      this.form.markAllAsTouched();
+    }
   }
 }
