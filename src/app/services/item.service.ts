@@ -25,5 +25,7 @@ export class ItemService {
     return this.http.put(`${this.apiUrl}/item/${name}`, payload);
   }
 
-
+  deleteItem(name: Item['name']) {
+    return this.http.delete(`${this.apiUrl}/item/${name}`);
+  }
 }

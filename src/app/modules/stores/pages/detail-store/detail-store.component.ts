@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Item, Store } from './../../../../models/store.model';
 import { StoreService } from 'src/app/services/store.service';
 import { ActivatedRoute } from '@angular/router';
-import { Dialog } from '@angular/cdk/dialog';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-detail-store',
@@ -13,7 +13,8 @@ export class DetailStoreComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private itemService: ItemService
   ) {}
 
   ngOnInit() {
@@ -31,7 +32,14 @@ export class DetailStoreComponent implements OnInit {
     });
   }
 
-  deleteItem(name: Store['name']) {
-    //
+  deleteItemByName(name: Item['name']) {
+    this.itemService.deleteItem(name).subscribe({
+      next: () => {
+        this.getStore(this.store!.name);
+      },
+      error: () => {
+        //
+      }
+    })
   }
 }
