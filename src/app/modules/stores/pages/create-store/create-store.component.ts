@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CustomValidators } from '../../../../utils/validators';
 import { StoreService } from 'src/app/services/store.service';
 
 @Component({
@@ -13,11 +12,6 @@ export class CreateStoreComponent {
     {
       name: ['', [Validators.required]],
     },
-    {
-      validators: [
-        CustomValidators.MatchValidator('password', 'confirmPassword'),
-      ],
-    }
   );
   status = 'init';
 

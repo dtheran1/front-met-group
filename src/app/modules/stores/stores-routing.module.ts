@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { StoresComponent } from './pages/stores/stores.component';
 import { CreateStoreComponent } from './pages/create-store/create-store.component';
-import { ItemsComponent } from './pages/items/items.component';
+// import { ItemsComponent } from './pages/items/items.component';
 import { DetailStoreComponent } from './pages/detail-store/detail-store.component';
 import { EditItemComponent } from './pages/edit-item/edit-item.component';
+// import { CreateItemComponent } from './pages/create-item/create-item.component';
 
 const routes: Routes = [
   {
@@ -17,13 +18,17 @@ const routes: Routes = [
     component: CreateStoreComponent,
   },
   {
-    path: 'store/:name',
+    path: 'store/:storename',
     component: DetailStoreComponent,
   },
   {
-    path: 'store/:name/item/:name',
+    path: 'store/:storename/item/:itemname',
     component: EditItemComponent,
   },
+  // {
+  //   path: 'store/:storename/item/create-item/new',
+  //   component: CreateItemComponent,
+  // },
 ];
 
 @NgModule({

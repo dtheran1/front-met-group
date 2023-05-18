@@ -13,20 +13,20 @@ export class DetailStoreComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params) => {
-      const name = params.get('name');
-      if (name) {
-        this.getStore(name);
+      const storeName = params.get('storename');
+      if (storeName) {
+        this.getStore(storeName);
       }
     });
   }
 
-  private getStore(name: string) {
-    this.storeService.getStore(name).subscribe((data) => {
+  private getStore(storeName: Store['name']) {
+    this.storeService.getStore(storeName).subscribe((data) => {
       this.store = data;
     });
   }

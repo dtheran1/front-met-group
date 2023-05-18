@@ -11,17 +11,17 @@ export class ItemService {
 
   constructor(private http: HttpClient) {}
 
-  getItemByName(name: Item['name']) { // Token
+  getItemByName(name: string) { // Token
     return this.http.get<Item>(`${this.apiUrl}/item/${name}`, {
       context: checkToken(),
     });
   }
 
-  createItem(name: Item['name']) {
-    return this.http.post(`${this.apiUrl}/item/${name}`, {});
+  createItem(name: Item['name'], payload: Item) {
+    return this.http.post(`${this.apiUrl}/item/${name}`, payload);
   }
 
-  updateItem(name: Item['name'], payload: any) {
+  updateItem(name: Item['name'], payload: Item) {
     return this.http.put(`${this.apiUrl}/item/${name}`, payload);
   }
 
