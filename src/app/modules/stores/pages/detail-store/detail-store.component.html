@@ -1,11 +1,7 @@
 <div class="container mx-auto flex mt-10">
   <div class="w-full">
     <div class="flex justify-between items-center mb-4">
-      <a [routerLink]="['/app']"
-        class="flex text-black backdrop-blur-md bg-white/30 font-bold text-xl w-32 rounded-lg hover:bg-black hover:text-white">
-        <img src="../../../../../assets/back.svg" class="w-10" alt="">
-        <span class="self-center">Go Back</span>
-      </a>
+      <app-go-back></app-go-back>
       <h1 class="text-4xl font-bold mb-4 text-white">{{ store?.name | uppercase }}</h1>
       <a [routerLink]="['item/create-item']"
         class="flex items-center rounded-lg h-10 bg-blue-600 text-white font-bold px-4 hover:bg-blue-800">Create new
@@ -15,7 +11,8 @@
       <h3 class="text-white text-xl font-bold">Items of Store:</h3>
     </div>
     <div *ngIf="store!.items.length === 0" class="backdrop-blur-sm bg-white/30 rounded-lg p-4 w-1/2">
-      <p class="text-white text-xl font-bold">You do not have any items in this store, please <a [routerLink]="['item/create-item']" class="underline text-blue-900">create a new item</a></p>
+      <p class="text-white text-xl font-bold">You do not have any items in this store, please <a
+          [routerLink]="['item/create-item']" class="underline text-blue-900">create a new item</a></p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">

@@ -1,10 +1,6 @@
 <div class="container">
   <div *ngIf="!isCreating">
-    <button (click)="goBack()"
-      class="flex text-black backdrop-blur-md bg-white/30 font-bold text-xl ml-10 mt-10 w-32 rounded-lg hover:bg-black hover:text-white">
-      <img src="../../../../../assets/back.svg" class="w-10" alt="">
-      <span class="self-center">Go Back</span>
-    </button>
+    <app-go-back></app-go-back>
     <div class="bg-white/30 rounded-xl shadow-xl p-4 my-4 flex w-7/12 justify-center mx-auto ">
       <div>
         <h1 class="text-center font-bold py-2 text-white text-2xl">Edit price of {{ item?.name }}</h1>
