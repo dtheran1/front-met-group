@@ -33,13 +33,16 @@ export class StoresComponent implements OnInit {
   faUsers = faUsers;
   faGear = faGear;
 
-  constructor(private meService: MeService, private storeService: StoreService) {}
+  constructor(
+    private meService: MeService,
+    private storeService: StoreService,
+  ) {}
 
   ngOnInit() {
-    this.getMeBoards();
+    this.getMeStores();
   }
-  getMeBoards() {
-    this.meService.getMeStores().subscribe(data => {
+  getMeStores() {
+    this.meService.getMeStores().subscribe((data) => {
       this.stores = data.stores;
     });
   }
@@ -47,7 +50,7 @@ export class StoresComponent implements OnInit {
   deleteStore(name: string) {
     this.storeService.deleteStore(name).subscribe({
       next: () => {
-        this.getMeBoards();
+        this.getMeStores();
       },
     });
   }

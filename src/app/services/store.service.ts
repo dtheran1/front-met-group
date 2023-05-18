@@ -11,15 +11,15 @@ export class StoreService {
 
   constructor(private http: HttpClient) {}
 
-  createStore(name: string) {
+  createStore(name: Store['name']) {
     return this.http.post(`${this.apiUrl}/store/${name}`, {});
   }
 
-  getStore(name: string) {
+  getStore(name: Store['name']) {
     return this.http.get<Store>(`${this.apiUrl}/store/${name}`);
   }
 
-  deleteStore(name: string) {
+  deleteStore(name: Store['name']) {
     return this.http.delete(`${this.apiUrl}/store/${name}`);
   }
 }

@@ -28,6 +28,8 @@ export class LoginFormComponent {
   ) {
     this.route.queryParamMap.subscribe((params) => {
       const username = params.get('username');
+      console.log(username);
+
       if (username) {
         this.form.controls.username.setValue(username);
       }
