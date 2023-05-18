@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CustomValidators } from '../../../../utils/validators';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
@@ -67,7 +66,7 @@ export class EditItemComponent implements OnInit {
         price,
         store_id: this.store?.id,
       };
-      this.itemService.createItem(name, payload as Item).subscribe((data) => ({
+      this.itemService.createItem(name, payload as Item).subscribe({
         next: () => {
           this.status = 'success';
           this.router.navigate(['/app']);
@@ -75,7 +74,7 @@ export class EditItemComponent implements OnInit {
         error: () => {
           this.status = 'failed';
         },
-      }));
+      });
     } else {
       this.form.markAllAsTouched();
     }

@@ -7,7 +7,7 @@
     </a>
     <div class="bg-white/30 rounded-xl shadow-xl p-4 my-4 flex w-7/12 justify-center mx-auto ">
       <div>
-        <h1 class="text-center font-bold py-2 text-blue-700 text-xl">Edit price of {{ item?.name }}</h1>
+        <h1 class="text-center font-bold py-2 text-white text-2xl">Edit price of {{ item?.name }}</h1>
         <form [formGroup]="formEdit" novalidate class="space-y-4" (ngSubmit)="updateItem()">
           <div>
             <div class="relative">
@@ -37,7 +37,7 @@
     </a>
     <div class="bg-white/30 rounded-xl shadow-xl p-4 my-4 flex w-7/12 justify-center mx-auto ">
       <div>
-        <h1 class="text-center font-bold py-2 text-blue-700 text-xl">Create new Item</h1>
+        <h1 class="text-center font-bold py-2 text-white text-2xl mb-4">Create new Item</h1>
         <form [formGroup]="form" novalidate class="space-y-4" (ngSubmit)="createItem()">
           <div>
             <div class="relative">

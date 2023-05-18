@@ -6,10 +6,14 @@
         class="flex items-center rounded-lg bg-blue-600 text-white font-bold px-4 hover:bg-blue-800">Create new
         Store</a>
     </div>
+    <div *ngIf="stores.length === 0" class="backdrop-blur-sm bg-white/30 rounded-lg p-4 w-1/2">
+      <p class="text-white text-xl font-bold">You do not have any store, please <a [routerLink]="['create-store']"
+          class="underline text-blue-900">create a new store</a></p>
+    </div>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <div *ngFor="let store of stores"
-        class="max-w-sm p-6 border rounded-lg shadow bg-gray-800 border-gray-700 hover:scale-105 transition ease-out">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white truncate">{{ store.name }}</h5>
+        class="max-w-sm p-6 border rounded-lg backdrop-blur-sm bg-white/30 hover:shadow-xl hover:shadow-black transition ease-out">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-white truncate">{{ store.name | uppercase }}</h5>
         <img src="../../../../../assets/store.png" class="h-32 mx-auto my-4" alt="store-image">
         <div class="flex justify-center gap-4">
           <a [routerLink]="['store', store.name]"
