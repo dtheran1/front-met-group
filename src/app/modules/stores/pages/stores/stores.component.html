@@ -6,7 +6,7 @@
         class="flex items-center rounded-lg bg-blue-600 text-white font-bold px-4 hover:bg-blue-800">Create new
         Store</a>
     </div>
-    <div *ngIf="stores.length === 0" class="backdrop-blur-sm bg-white/30 rounded-lg p-4 w-1/2">
+    <div *ngIf="stores.length === 0" class="backdrop-blur-sm bg-white/30 rounded-lg p-4 w-3/4 text-center mx-auto">
       <p class="text-white text-xl font-bold">You do not have any store, please <a [routerLink]="['create-store']"
           class="underline text-blue-900">create a new store</a></p>
     </div>

@@ -10,7 +10,7 @@
     <div class="my-4">
       <h3 class="text-white text-xl font-bold">Items of Store:</h3>
     </div>
-    <div *ngIf="store!.items.length === 0" class="backdrop-blur-sm bg-white/30 rounded-lg p-4 w-1/2">
+    <div *ngIf="store!.items.length === 0" class="backdrop-blur-sm bg-white/30 rounded-lg p-4 w-3/4 text-center mx-auto">
       <p class="text-white text-xl font-bold">You do not have any items in this store, please <a
           [routerLink]="['item/create-item']" class="underline text-blue-900">create a new item</a></p>
     </div>
@@ -30,7 +30,7 @@
         <div class="flex justify-center gap-4">
           <a [routerLink]="['item', item?.name]"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none bg-blue-600 focus:ring-blue-800">
-            Update Item
+            Edit item
           </a>
           <button (click)="deleteItemByName(item.name)"
             class="rounded-lg bg-red-600 text-white px-2 text-sm focus:ring-red-800 focus:ring-4 hover:bg-red-800">Delete

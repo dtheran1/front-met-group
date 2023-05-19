@@ -8,6 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    title: 'DT Store',
     children: [
       {
         path: '',

@@ -1,6 +1,8 @@
 <div class="container">
   <div *ngIf="!isCreating">
-    <app-go-back></app-go-back>
+   <div class="mt-10 ml-10">
+     <app-go-back></app-go-back>
+   </div>
     <div class="bg-white/30 rounded-xl shadow-xl p-4 my-4 flex w-7/12 justify-center mx-auto ">
       <div>
         <h1 class="text-center font-bold py-2 text-white text-2xl">Edit price of {{ item?.name }}</h1>
