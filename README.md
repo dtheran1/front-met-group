@@ -1,5 +1,7 @@
 # MetGroup
 
+Asegurate de iniciar el servidor que se encuentra en este [repositorio](https://github.com/dtheran1/back-met-group), donde esta el backend que consume este proyecto 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.5.
 
 ## Development server
