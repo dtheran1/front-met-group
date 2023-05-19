@@ -40,7 +40,8 @@ export class LoginFormComponent {
     if (this.form.valid) {
       this.status = 'loading';
       const { username, password } = this.form.getRawValue();
-      this.authService.login(username, password).subscribe({
+      const payload = { username, password };
+      this.authService.login(payload).subscribe({
         next: () => {
           this.status = 'success';
           this.router.navigate(['/app']);

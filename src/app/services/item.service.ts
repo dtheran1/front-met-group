@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Item, Store } from '../models/store.model';
+import { Item, RequestItem } from '../models/store.model';
 import { checkToken } from '../interceptors/token.interceptor';
 @Injectable({
   providedIn: 'root',
@@ -11,17 +11,18 @@ export class ItemService {
 
   constructor(private http: HttpClient) {}
 
-  getItemByName(name: string) { // Token
+  getItemByName(name: string) {
+    // Token
     return this.http.get<Item>(`${this.apiUrl}/item/${name}`, {
       context: checkToken(),
     });
   }
 
-  createItem(name: Item['name'], payload: Item) {
+  createItem(name: Item['name'], payload: RequestItem) {
     return this.http.post<Item>(`${this.apiUrl}/item/${name}`, payload);
   }
 
-  updateItem(name: Item['name'], payload: Item) {
+  updateItem(name: Item['name'], payload: RequestItem) {
     return this.http.put<Item>(`${this.apiUrl}/item/${name}`, payload);
   }
 

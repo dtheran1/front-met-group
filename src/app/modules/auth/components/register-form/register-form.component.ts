@@ -40,7 +40,8 @@ export class RegisterFormComponent {
     if (this.form.valid) {
       this.status = 'loading';
       const { username, password } = this.form.getRawValue();
-      this.autService.register(username, password).subscribe({
+      const payload = { username, password };
+      this.autService.register(payload).subscribe({
         next: () => {
           this.status = 'success';
           this.router.navigate(['/login'], {

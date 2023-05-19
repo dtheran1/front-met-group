@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
-import { Item, Store } from 'src/app/models/store.model';
+import { Item, RequestItem, Store } from 'src/app/models/store.model';
 import { StoreService } from 'src/app/services/store.service';
 import { Location } from '@angular/common';
 
@@ -68,7 +68,7 @@ export class EditItemComponent implements OnInit {
         price,
         store_id: this.store?.id,
       };
-      this.itemService.createItem(name, payload as Item).subscribe({
+      this.itemService.createItem(name, payload as RequestItem).subscribe({
         next: () => {
           this.status = 'success';
           this.goBack();
@@ -90,15 +90,17 @@ export class EditItemComponent implements OnInit {
         store_id: this.item?.store_id,
       };
 
-      this.itemService.updateItem(this.item!.name, payload as Item).subscribe({
-        next: () => {
-          this.status = 'success';
-          this.goBack();
-        },
-        error: () => {
-          this.status = 'failed';
-        },
-      });
+      this.itemService
+        .updateItem(this.item!.name, payload as RequestItem)
+        .subscribe({
+          next: () => {
+            this.status = 'success';
+            this.goBack();
+          },
+          error: () => {
+            this.status = 'failed';
+          },
+        });
     } else {
       this.form.markAllAsTouched();
     }
